@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/static/firebase";
 import { addUser, removeUser, userSelector } from "../utils/redux/UserSlice";
@@ -6,12 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { isNullorEmpty } from "../utils/static/common";
 import AppLogo from "../utils/media/appLogo.png";
+import { gptSelector, toggleSearchView } from "../utils/redux/GPTSlice";
 
 const Header = () => {
   const user = useSelector(userSelector);
+  const { isSearchView } = useSelector(gptSelector);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [openUserMenu, setOpenUserMenu] = useState<boolean>(false);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userObj) => {
       if (userObj) {
@@ -30,13 +33,13 @@ const Header = () => {
   }, []);
 
   const signOutHandler = (event: any) => {
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        // An error happened.
-      });
+    event.preventDefault();
+    signOut(auth);
+  };
+
+  const searchClickHandler = (event: SyntheticEvent, show: boolean) => {
+    event.preventDefault();
+    dispatch(toggleSearchView(show));
   };
 
   const isUser = !isNullorEmpty(user.uid);
@@ -44,16 +47,29 @@ const Header = () => {
   return (
     <header
       className={`shadow-lg flex justify-between w-full px-16 pt-2 z-10 ${
-        isUser ? "fixed bg-black z-30 opacity-90 rounded-b-lg pb-1" : "absolute bg-gradient-to-b from-black py-8 px-4"
+        isUser
+          ? "fixed bg-black z-30 opacity-90 rounded-b-lg pb-1"
+          : "absolute bg-gradient-to-b from-black py-8 px-4"
       }`}
     >
       <img
         className={`${isUser ? "w-32 h-12 ml-4 mt-1.5" : "w-40 ml-6"}`}
         src={AppLogo}
         alt="app logo"
+        onClick={(event: SyntheticEvent) => searchClickHandler(event, false)}
       />
       {isUser && (
-        <>
+        <div className="flex justify-end items-center">
+          {!isSearchView && (
+            <button
+              onClick={(event: SyntheticEvent) =>
+                searchClickHandler(event, true)
+              }
+              className="text-white mr-10 w-9 h-9 cursor-pointer text-3xl bg-amber-50 rounded-full shadow-black shadow-md"
+            >
+              🔍
+            </button>
+          )}
           <div className="flex justify-end w-9 h-9 m-3 cursor-pointer">
             <img
               className="rounded-md"
@@ -77,7 +93,7 @@ const Header = () => {
               </li>
             </ul>
           )}
-        </>
+        </div>
       )}
     </header>
   );

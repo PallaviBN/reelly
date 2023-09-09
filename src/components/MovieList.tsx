@@ -49,6 +49,7 @@ const MovieList = ({ type, movies }: MovieListProps) => {
             return (
               <li key={movie?.id}>
                 <MovieCard
+                  movieBackdrop={movie?.backdrop_path}
                   moviePoster={movie?.poster_path}
                   movieTitle={movie?.title}
                 />

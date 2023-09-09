@@ -14,7 +14,7 @@ const usePopulateMovies = (
 ): void => {
   const dispatch = useDispatch();
   const getMoviesUrl = () =>
-    `https://api.themoviedb.org/3/movie/${type.toLowerCase()}?page=1&certification_country=India`;
+    `https://api.themoviedb.org/3/movie/${type.toLowerCase()}?page=1`;
 
   useEffect(() => {
     getNowPlayingList();
@@ -31,7 +31,6 @@ const usePopulateMovies = (
         UPCOMING: addToUpcoming,
         TOP_RATED: addToTopRated,
       };
-console.log("type::", type, typeToDispatch[type])
       // Dispatch the appropriate action based on the type
       if (typeToDispatch[type]) {
         dispatch(typeToDispatch[type](data?.results));

@@ -14,14 +14,12 @@ const usePopulateMovieTrailer = (movieId: number): void => {
   }, []);
 
   const getVideos = async () => {
-      const data = await fetchWrapper(getVideoUrl());
-      const trailerVideo = await data?.results?.filter(
-        (videoObj: MovieVideo) => videoObj.type === "Trailer"
-      );
-      console.log("trailer", trailerVideo, data?.results);
-      const trailer = trailerVideo.length ? trailerVideo[0]: data?.results[0];
-      dispatch(addFeaturedTrailer(trailer));
-    
+    const data = await fetchWrapper(getVideoUrl());
+    const trailerVideo = await data?.results?.filter(
+      (videoObj: MovieVideo) => videoObj.type === "Trailer"
+    );
+    const trailer = trailerVideo.length ? trailerVideo[0] : data?.results[0];
+    dispatch(addFeaturedTrailer(trailer));
   };
 };
 

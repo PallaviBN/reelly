@@ -27,3 +27,10 @@ export interface MovieVideo {
   size: number;
   type: string;
 }
+
+export enum MovieType {
+  "NOW_PLAYING",
+  "POPULAR",
+  "UPCOMING",
+  "TOP_RATED",
+}
