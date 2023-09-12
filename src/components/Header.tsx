@@ -6,7 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { isNullorEmpty } from "../utils/static/common";
 import AppLogo from "../utils/media/appLogo.png";
-import { gptSelector, toggleSearchView } from "../utils/redux/GPTSlice";
+import {
+  gptSelector,
+  setLocale,
+  toggleSearchView,
+} from "../utils/redux/GPTSlice";
+import translate from "../utils/intl/translate";
+import { SUPPORTED_LANGUAGES, USER_ICON } from "../utils/static/constants";
+import { SupportedLanguage } from "../utils/static/type";
 
 const Header = () => {
   const user = useSelector(userSelector);
@@ -40,6 +47,12 @@ const Header = () => {
   const searchClickHandler = (event: SyntheticEvent, show: boolean) => {
     event.preventDefault();
     dispatch(toggleSearchView(show));
+    dispatch(setLocale("en"));
+  };
+
+  const handleLanguageSelect = (event: any) => {
+    const selectedLocale = event.target.value;
+    dispatch(setLocale(selectedLocale));
   };
 
   const isUser = !isNullorEmpty(user.uid);
@@ -60,7 +73,24 @@ const Header = () => {
       />
       {isUser && (
         <div className="flex justify-end items-center">
-          {!isSearchView && (
+          {isSearchView ? (
+            <select
+              className="mr-7 p-1.5 rounded-md font-bold text-white bg-indigo-800"
+              onChange={handleLanguageSelect}
+            >
+              {SUPPORTED_LANGUAGES.map((lang: SupportedLanguage) => {
+                return (
+                  <option
+                    className="bg-white text-black opacity-70 font-mono"
+                    key={lang.id}
+                    value={lang.id}
+                  >
+                    {lang.name}
+                  </option>
+                );
+              })}
+            </select>
+          ) : (
             <button
               onClick={(event: SyntheticEvent) =>
                 searchClickHandler(event, true)
@@ -70,15 +100,13 @@ const Header = () => {
               🔍
             </button>
           )}
-          <div className="flex justify-end w-9 h-9 m-3 cursor-pointer">
-            <img
-              className="rounded-md"
-              alt="User Icon"
-              src="https://i.pinimg.com/564x/1b/a2/e6/1ba2e6d1d4874546c70c91f1024e17fb.jpg"
-              onClick={() => {
-                setOpenUserMenu(!openUserMenu);
-              }}
-            />
+          <div
+            className="flex justify-end w-9 h-9 m-3 cursor-pointer"
+            onClick={() => {
+              setOpenUserMenu(!openUserMenu);
+            }}
+          >
+            <img className="rounded-md" alt="User Icon" src={USER_ICON} />
             <span className="mt-3 ml-2 text-xs text-white">
               {!openUserMenu ? "▼" : "▲"}
             </span>
@@ -89,7 +117,7 @@ const Header = () => {
                 className="text-center cursor-pointer"
                 onClick={signOutHandler}
               >
-                Sign Out
+                {translate("sign.out.text")}
               </li>
             </ul>
           )}

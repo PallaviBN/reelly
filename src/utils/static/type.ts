@@ -28,6 +28,11 @@ export interface MovieVideo {
   type: string;
 }
 
+export interface SupportedLanguage {
+  id: string;
+  name: string;
+}
+
 export enum MovieType {
   "NOW_PLAYING",
   "POPULAR",
