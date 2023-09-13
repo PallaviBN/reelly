@@ -2,5 +2,7 @@
   "search.text": "Recherche",
   "search.placeholder": "Qu’est-ce que tu as envie de regarder ?",
   "search.result": "Résultat de la recherche",
-  "sign.out.text": "Se déconnecter"
+  "sign.out.text": "Se déconnecter",
+  "search.empty.text": "Le texte de recherche est vide!",
+  "search.no.response": "Aucun résultat trouvé!"
 }

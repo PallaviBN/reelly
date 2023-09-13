@@ -14,7 +14,7 @@ const fetchWrapper = async (url: string) => {
     const res = response.json();
     return res;
   } catch (error) {
-    return error;
+    console.error(error.message);
   }
 };
 export default fetchWrapper;

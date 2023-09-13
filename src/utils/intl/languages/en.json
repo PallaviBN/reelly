@@ -1,6 +1,8 @@
 {
   "search.text": "Search",
   "search.placeholder": "What do you feel like watching?",
-  "search.result": "Search Result",
-  "sign.out.text": "Sign Out"
+  "search.result": "Search Results for ",
+  "sign.out.text": "Sign Out",
+  "search.empty.text": "Search text is empty!",
+  "search.no.response": "No results found!"
 }

@@ -8,13 +8,12 @@ import {
   addToUpcoming,
   setFeaturedMovieIndex,
 } from "../utils/redux/MovieSlice";
+import { TMDB_MOVIES_API } from "../utils/static/constants";
 
 const usePopulateMovies = (
   type: "NOW_PLAYING" | "POPULAR" | "UPCOMING" | "TOP_RATED"
 ): void => {
   const dispatch = useDispatch();
-  const getMoviesUrl = () =>
-    `https://api.themoviedb.org/3/movie/${type.toLowerCase()}?page=1`;
 
   useEffect(() => {
     getNowPlayingList();
@@ -22,7 +21,7 @@ const usePopulateMovies = (
 
   const getNowPlayingList = async () => {
     try {
-      const data = await fetchWrapper(getMoviesUrl());
+      const data = await fetchWrapper(TMDB_MOVIES_API(type));
 
       // Define a mapping of types to dispatch functions
       const typeToDispatch = {
