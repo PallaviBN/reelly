@@ -4,8 +4,10 @@ import { MovieData } from "../static/type";
 const initialGPTState = {
   isSearchView: false,
   locale: "en",
-  searhTxt: "",
-  movieSearchResult: [] as MovieData[],
+  movieSearchResult: {
+    gptResponse: [] as Array<string>,
+    movies: [] as MovieData[],
+  },
 };
 
 const gptSlice = createSlice({
@@ -18,11 +20,12 @@ const gptSlice = createSlice({
     setLocale: (state, { payload }) => {
       state.locale = payload;
     },
-    populateSearchText: (state, { payload }) => {
-      state.searhTxt = payload;
-    },
     addMovieResult: (state, { payload }) => {
-      state.movieSearchResult.push(payload);
+      state.movieSearchResult.gptResponse = payload.movieNames;
+      state.movieSearchResult.movies = payload.movies;
+    },
+    resetMovieSearchResult: (state) => {
+      state.movieSearchResult.movies = [];
     },
   },
 });
@@ -31,7 +34,7 @@ export const {
   toggleSearchView,
   setLocale,
   addMovieResult,
-  populateSearchText,
+  resetMovieSearchResult,
 } = gptSlice.actions;
 export default gptSlice.reducer;
 export const gptSelector = (state: any) => state.gptData;

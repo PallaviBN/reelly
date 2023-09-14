@@ -7,7 +7,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/static/firebase";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux/UserSlice";
 
 const Login = () => {
@@ -106,7 +106,7 @@ const Login = () => {
         />
       </div>
 
-      <form className="absolute top-1/4 mx-auto w-5/6 lg:w-[30%] h-[65%] lg:h-auto overflow-auto right-0 left-0 px-16 py-14 bg-black bg-opacity-80 flex flex-col rounded-md">
+      <form className="absolute top-1/4 mx-auto w-5/6 lg:w-[30%] h-[65%] lg:h-auto overflow-auto right-0 left-0 px-16 py-14 bg-opacity-80 flex flex-col rounded-md">
         <h1 className="text-white font-medium text-3xl mb-7">
           {`Sign ${isSignIn ? "In" : "Up"}`}
         </h1>

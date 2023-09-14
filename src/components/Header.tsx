@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/static/firebase";
 import { addUser, removeUser, userSelector } from "../utils/redux/UserSlice";
@@ -14,6 +14,7 @@ import {
 import translate from "../utils/intl/translate";
 import { SUPPORTED_LANGUAGES, USER_ICON } from "../utils/static/constants";
 import { SupportedLanguage } from "../utils/static/type";
+import React from "react";
 
 const Header = () => {
   const user = useSelector(userSelector);

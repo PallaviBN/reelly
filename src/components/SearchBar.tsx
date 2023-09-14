@@ -5,7 +5,8 @@ import openai from "../utils/static/openai";
 import fetchWrapper from "../utils/static/fetchWrapper";
 import { TMDB_SEARCH_API } from "../utils/static/constants";
 import { useDispatch } from "react-redux";
-import { addMovieResult, populateSearchText } from "../utils/redux/GPTSlice";
+import { addMovieResult } from "../utils/redux/GPTSlice";
+import SearchResults from "./SearchResults";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,6 @@ const SearchBar = () => {
 
   const tmdbSearch = async (movie: string) => {
     const data = await fetchWrapper(TMDB_SEARCH_API(movie));
-    console.log(data, data.results);
     return data?.results;
   };
 
@@ -34,7 +34,8 @@ const SearchBar = () => {
       const searchQuery =
         "Act as a Movie recommendation system and suggest the movie titles for the query:" +
         searchText?.current?.value +
-        ". Limit the results to 10 and provide the output as comma separated movie titles, eg: jawan, avengers, mili, mission impossible";
+        ". Limit the results to 5 and provide the output as comma separated movie titles, eg: jawan, avengers, parasite, titanic, mission impossible";
+
       const searchResult = await openai.chat.completions.create({
         messages: [{ role: "user", content: searchQuery }],
         model: "gpt-3.5-turbo",
@@ -42,20 +43,19 @@ const SearchBar = () => {
       if (!searchResult.choices) {
         setErrorMsg(noResponseText);
       } else {
-        dispatch(populateSearchText(searchText?.current?.value));
-        const response = searchResult.choices[0].message.content?.split(", ");
-        console.log(response);
+        const response =
+          searchResult.choices?.[0]?.message?.content?.split(", ");
         // call TMDB to get results for each of the movies
         const tmdbPromiseArray = response?.map((movie: string) => {
-          tmdbSearch(movie);
+          return tmdbSearch(movie);
         });
 
         //wait till each movie search promise is resolved
         if (tmdbPromiseArray) {
           const tmdbResponse = await Promise.all(tmdbPromiseArray);
-          await console.log(tmdbResponse);
-          // tmdbResponse.map(li)
-          dispatch(addMovieResult(tmdbResponse));
+          dispatch(
+            addMovieResult({ movieNames: response, movies: tmdbResponse })
+          );
         }
       }
     } else {
@@ -66,7 +66,7 @@ const SearchBar = () => {
   return (
     <div className="">
       <form
-        className="flex items-center justify-center w-screen pt-[8%] bg-black"
+        className="flex items-center justify-center w-screen pt-[8%]"
         onSubmit={(event: SyntheticEvent) => {
           event.preventDefault();
         }}
@@ -90,6 +90,7 @@ const SearchBar = () => {
       {errorMsg && (
         <p className="font-bold text-red-400 text-center">{errorMsg}</p>
       )}
+      <SearchResults searchTxt={searchText?.current?.value} />
     </div>
   );
 };

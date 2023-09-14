@@ -6,6 +6,8 @@ import PrimarySection from "./PrimarySection";
 import SecondarySection from "./SecondarySection";
 import Search from "./Search";
 import { gptSelector } from "../utils/redux/GPTSlice";
+import React from "react";
+import Footer from "./Footer";
 
 const Browse = () => {
   usePopulateMovies("NOW_PLAYING");
@@ -23,6 +25,7 @@ const Browse = () => {
           <SecondarySection />
         </>
       )}
+      <Footer/>
     </div>
   );
 };

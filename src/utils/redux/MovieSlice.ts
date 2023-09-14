@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { MovieData, MovieVideo } from "../static/type";
 
 const initialMovieState = {
@@ -16,32 +16,26 @@ const movieSlice = createSlice({
   reducers: {
     setFeaturedMovieIndex: (state) => {
       state.featureMovieIndex = Math.floor(
-        Math.random() * state.nowPlayingMovies.length
+        Math.random() * state.nowPlayingMovies?.length
       );
     },
     addToNowPlaying: (state, { payload }) => {
       state.nowPlayingMovies = payload;
-      //   console.log(state.nowPlayingMovies, payload);
     },
     addToPopular: (state, { payload }) => {
       state.popularMovies = payload;
-      //   console.log(state.popularMovies, payload);
     },
     addToUpcoming: (state, { payload }) => {
       state.upcomingMovies = payload;
-      //   console.log(state.upcomingMovies, payload);
     },
     addToTopRated: (state, { payload }) => {
       state.topRatedMovies = payload;
-      //   console.log(state.topRatedMovies, payload);
     },
     addFeaturedTrailer: (state, { payload }) => {
       state.featuredMovieTrailer = payload;
-      //   console.log(state.featuredMovieTrailer, payload);
     },
     resetFeaturedTrailer: (state) => {
       state.featuredMovieTrailer = {} as MovieVideo;
-      //   console.log(state.featuredMovieTrailer, payload);
     },
   },
 });

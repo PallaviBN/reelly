@@ -1,16 +1,20 @@
 import { useEffect } from "react";
 import fetchWrapper from "../utils/static/fetchWrapper";
-import { useDispatch } from "react-redux";
-import { addFeaturedTrailer } from "../utils/redux/MovieSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addFeaturedTrailer, movieSelector } from "../utils/redux/MovieSlice";
 import { MovieVideo } from "../utils/static/type";
 import { TMDB_VIDEO_API } from "../utils/static/constants";
 
 const usePopulateMovieTrailer = (movieId: number): void => {
   const dispatch = useDispatch();
+  const { featuredMovieTrailer } = useSelector(movieSelector);
 
   useEffect(() => {
-    getVideos();
-  }, []);
+    // Call only if featuredMovieTrailer is empty
+    if (Object.keys(featuredMovieTrailer).length === 0) {
+      getVideos();
+    }
+  }, [featuredMovieTrailer]);
 
   const getVideos = async () => {
     try {

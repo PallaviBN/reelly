@@ -1,7 +1,7 @@
 import usePopulateMovieTrailer from "../hooks/usePopulateMovieTrailer";
 import { useSelector } from "react-redux";
 import { movieSelector } from "../utils/redux/MovieSlice";
-
+import React from "react";
 interface FeaturedBackgroundProps {
   movieId: number;
 }
@@ -12,7 +12,7 @@ const FeaturedBackground = ({ movieId }: FeaturedBackgroundProps) => {
   usePopulateMovieTrailer(movieId);
 
   const { featuredMovieTrailer } = useSelector(movieSelector);
-  console.log(featuredMovieTrailer);
+
   return (
     <div className="w-screen">
       <iframe

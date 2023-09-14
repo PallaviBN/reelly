@@ -7,6 +7,7 @@ import {
 } from "../utils/redux/MovieSlice";
 import { MovieData } from "../utils/static/type";
 import { useEffect } from "react";
+import React from "react";
 
 const PrimarySection = () => {
   const { nowPlayingMovies, featureMovieIndex } = useSelector(movieSelector);

@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import fetchWrapper from "../utils/static/fetchWrapper";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addToNowPlaying,
   addToPopular,
   addToTopRated,
   addToUpcoming,
+  movieSelector,
   setFeaturedMovieIndex,
 } from "../utils/redux/MovieSlice";
 import { TMDB_MOVIES_API } from "../utils/static/constants";
@@ -15,26 +16,44 @@ const usePopulateMovies = (
 ): void => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getNowPlayingList();
-  }, []);
+  const { nowPlayingMovies, popularMovies, upcomingMovies, topRatedMovies } =
+    useSelector(movieSelector);
 
-  const getNowPlayingList = async () => {
+  // A map to associate type with state and action function
+  const typeMap = {
+    NOW_PLAYING: {
+      typeState: nowPlayingMovies,
+      actionCreator: addToNowPlaying,
+    },
+    POPULAR: {
+      typeState: popularMovies,
+      actionCreator: addToPopular,
+    },
+    UPCOMING: {
+      typeState: upcomingMovies,
+      actionCreator: addToUpcoming,
+    },
+    TOP_RATED: {
+      typeState: topRatedMovies,
+      actionCreator: addToTopRated,
+    },
+  };
+
+  useEffect(() => {
+    const { typeState, actionCreator } = typeMap[type];
+    // Call only if state is null
+    if (typeState.length === 0) {
+      getMovieList(type, actionCreator);
+    }
+  }, [dispatch, type, typeMap]);
+
+  const getMovieList = async (type, actionCreator) => {
     try {
       const data = await fetchWrapper(TMDB_MOVIES_API(type));
 
-      // Define a mapping of types to dispatch functions
-      const typeToDispatch = {
-        NOW_PLAYING: addToNowPlaying,
-        POPULAR: addToPopular,
-        UPCOMING: addToUpcoming,
-        TOP_RATED: addToTopRated,
-      };
       // Dispatch the appropriate action based on the type
-      if (typeToDispatch[type]) {
-        dispatch(typeToDispatch[type](data?.results));
-        if (type === "NOW_PLAYING") dispatch(setFeaturedMovieIndex());
-      }
+      dispatch(actionCreator(data?.results));
+      if (type === "NOW_PLAYING") dispatch(setFeaturedMovieIndex());
     } catch (error) {
       console.error("Error fetching movies:", error);
     }

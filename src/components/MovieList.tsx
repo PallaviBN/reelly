@@ -35,17 +35,17 @@ const MovieList = ({ type, movies }: MovieListProps) => {
       </h2>
       <div className="flex flex-row h-full group">
         <button
-          className={`text-white bg-slate-700 opacity-70 w-[4%] -ml-8 absolute left-0 h-[18.75%] text-2xl rounded-r-lg invisible ${
+          className={`text-white bg-slate-700 opacity-70 w-[4.5%] z-20 -ml-8 text-6xl hover:text-8xl absolute left-0 h-[20.3%] transition-all duration-300 ease-in-out rounded-r-lg invisible ${
             showArrow && showArrow > 0 ? "group-hover:visible" : ""
           }`}
           onClick={() => {
             handleHorizantalScroll(elementRef.current, 1000, -150);
           }}
         >
-          ⬅️
+          ‹
         </button>
         <ul className="flex overflow-x-hidden mx-4" ref={elementRef}>
-          {movies.map((movie: MovieData) => {
+          {movies?.map((movie: MovieData) => {
             return (
               <li key={movie?.id}>
                 <MovieCard
@@ -58,15 +58,13 @@ const MovieList = ({ type, movies }: MovieListProps) => {
           })}
         </ul>
         <button
-          className={`text-white bg-slate-700 opacity-70 w-[4%] mr-3 absolute right-0 h-[18.75%] text-2xl
-          rounded-l-lg invisible ${
-            showArrow === null || showArrow < 2320 ? "group-hover:visible" : ""
-          }`}
+          className={`text-white bg-slate-700 opacity-70 w-[4.5%] mr-3 absolute right-0 h-[20.3%] text-6xl hover:text-8xl transition-all duration-300 ease-in-out 
+          rounded-l-lg invisible ${showArrow === null || showArrow < 3320 ? "group-hover:visible" : ""}`}
           onClick={() => {
             handleHorizantalScroll(elementRef.current, 1000, 150);
           }}
         >
-          ➡️
+          ›
         </button>
       </div>
     </div>
