@@ -3,7 +3,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/static/firebase";
 import { addUser, removeUser, userSelector } from "../utils/redux/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { isNullorEmpty } from "../utils/static/common";
 import AppLogo from "../utils/media/appLogo.png";
 import {
@@ -29,7 +29,7 @@ const Header = () => {
         // User is signed in/up
         const { uid, email, displayName } = userObj;
         dispatch(addUser({ uid, email, displayName }));
-        navigate("/browse");
+        navigate(isSearchView?"/search" :"/browse");
       } else {
         // User is signed out
         dispatch(removeUser({}));
@@ -45,8 +45,7 @@ const Header = () => {
     signOut(auth);
   };
 
-  const searchClickHandler = (event: SyntheticEvent, show: boolean) => {
-    event.preventDefault();
+  const searchClickHandler = (show: boolean) => {
     dispatch(toggleSearchView(show));
     dispatch(setLocale("en"));
   };
@@ -60,20 +59,22 @@ const Header = () => {
 
   return (
     <header
-      className={`shadow-lg flex justify-between w-full px-16 pt-2 z-10 ${
+      className={`flex align-middle w-full py-4 z-10 shadow-none ${
         isUser
-          ? "fixed bg-black z-30 opacity-90 rounded-b-lg pb-1"
-          : "absolute bg-gradient-to-b from-black py-8 px-4"
+          ? `fixed z-30 opacity-90 rounded-b-lg px-4 md:px-16 justify-between ${!isSearchView ? "bg-black" : "bg-gradient-to-b from-black"}`
+          : "absolute bg-gradient-to-b from-black px-4 justify-center md:justify-between"
       }`}
     >
-      <img
-        className={`${isUser ? "w-32 h-12 ml-4 mt-1.5" : "w-40 ml-6"}`}
-        src={AppLogo}
-        alt="app logo"
-        onClick={(event: SyntheticEvent) => searchClickHandler(event, false)}
-      />
+      <Link to="/browse">
+        <img
+          className={`mx-auto ${isUser ? "md:w-32 h-12 md:ml-4 mt-1.5" : "w-40 md:ml-6"}`}
+          src={AppLogo}
+          alt="app logo"
+          onClick={(event: SyntheticEvent) => searchClickHandler(false)}
+        />
+      </Link>
       {isUser && (
-        <div className="flex justify-end items-center">
+        <div className="flex justify-center md:justify-end items-center">
           {isSearchView ? (
             <select
               className="mr-7 p-1.5 rounded-md font-bold text-white bg-indigo-800"
@@ -92,14 +93,13 @@ const Header = () => {
               })}
             </select>
           ) : (
-            <button
-              onClick={(event: SyntheticEvent) =>
-                searchClickHandler(event, true)
-              }
+            <Link
+              to="/search"
+              onClick={() => searchClickHandler(true)}
               className="text-white mr-10 w-9 h-9 cursor-pointer text-3xl bg-amber-50 rounded-full shadow-black shadow-md"
             >
               🔍
-            </button>
+            </Link>
           )}
           <div
             className="flex justify-end w-9 h-9 m-3 cursor-pointer"

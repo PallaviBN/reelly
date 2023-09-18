@@ -9,6 +9,7 @@ import {
 import { auth } from "../utils/static/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux/UserSlice";
+import BGSVG from "../utils/media/background.svg";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -84,7 +85,6 @@ const Login = () => {
         )
           .then((userCredential) => {
             // Signed in
-            const user8 = userCredential.user;
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -100,13 +100,14 @@ const Login = () => {
       <Header />
       <div className="bg-gradient-to-t from-black">
         <img
-          className="absolute h-full w-full"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/855ed6e2-d9f1-4afd-90da-96023ec747c3/85eb5b91-25ed-4965-ace9-ba8e4a0ead8d/IN-en-20230828-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          className="absolute h-full w-screen object-cover"
+          // src="https://assets.nflxext.com/ffe/siteui/vlv3/855ed6e2-d9f1-4afd-90da-96023ec747c3/85eb5b91-25ed-4965-ace9-ba8e4a0ead8d/IN-en-20230828-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={BGSVG}
           alt="background image"
         />
       </div>
 
-      <form className="absolute top-1/4 mx-auto w-5/6 lg:w-[30%] h-[65%] lg:h-auto overflow-auto right-0 left-0 px-16 py-14 bg-opacity-80 flex flex-col rounded-md">
+      <form className="absolute bg-black top-1/4 mx-auto w-5/6 lg:w-[30%] h-[65%] lg:h-auto overflow-auto right-0 left-0 px-16 py-14 bg-opacity-80 flex flex-col rounded-md">
         <h1 className="text-white font-medium text-3xl mb-7">
           {`Sign ${isSignIn ? "In" : "Up"}`}
         </h1>

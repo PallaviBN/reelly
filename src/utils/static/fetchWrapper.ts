@@ -13,7 +13,7 @@ const fetchWrapper = async (url: string) => {
   try {
     const res = response.json();
     return res;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
   }
 };

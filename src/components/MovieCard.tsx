@@ -13,7 +13,7 @@ const MovieCard = ({
   movieTitle,
 }: MovieCardProps) => {
   return (
-    <div className="relative w-56 h-80 ml-4">
+    <div className="relative w-44 xl:w-56 h-64 xl:h-80 ml-4">
       <div
         className="bg-cover bg-center rounded-xl h-full hover:bg-opacity-80 transition-all duration-300 ease-in-out"
         style={{

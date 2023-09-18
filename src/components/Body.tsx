@@ -10,6 +10,7 @@ import { gptSelector } from "../utils/redux/GPTSlice";
 import ENGLISH from "../utils/intl/languages/en.json";
 import HINDI from "../utils/intl/languages/hi.json";
 import FRENCH from "../utils/intl/languages/fr.json";
+import Search from "./Search";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -20,6 +21,10 @@ const Body = () => {
     {
       path: "/browse",
       element: <Browse />,
+    },
+    {
+      path: "/search",
+      element: <Search />,
     },
   ]);
 

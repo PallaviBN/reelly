@@ -18,7 +18,7 @@ const PrimarySection = () => {
   return (
     <>
       {featuredMovie && (
-        <div className="">
+        <div className="pt-[20%] md:pt-0">
           <FeaturedTitle
             title={featuredMovie?.original_title}
             overview={featuredMovie?.overview}

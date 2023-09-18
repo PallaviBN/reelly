@@ -4,6 +4,7 @@ import { gptSelector, resetMovieSearchResult } from "../utils/redux/GPTSlice";
 import { useDispatch, useSelector } from "react-redux";
 import MovieCard from "./MovieCard";
 import { MovieData } from "../utils/static/type";
+import translate from "../utils/intl/translate";
 
 const SearchResults = ({ searchTxt }) => {
   const dispatch = useDispatch();
@@ -23,12 +24,11 @@ const SearchResults = ({ searchTxt }) => {
   );
 
   return !searchTxt ? (
-    <div className="m-auto w-[50%] p-32 text-white text-2xl font-bold text-center">
-      Your Gateway to Movie Bliss Awaits... Begin Searching 🍿.Type to Discover
-      Your Next Cinematic Adventure 🎬
+    <div className=" m-auto w-[85%] md:w-[50%] p-16 md:p-32 text-white text-2xl bg-[#231f20] mt-4 rounded-3xl font-bold text-center">
+      {translate("search.result.empty.view.text")}
     </div>
   ) : (
-    <div className="m-auto w-[80%] h-screen text-white py-4 font-semibold text-base p-2">
+    <div className="m-auto w-[90%] md:w-[80%] text-white py-4 font-semibold text-base p-2">
       {searchTxt && (
         <div className="px-8">
           {searchPlaceholder}

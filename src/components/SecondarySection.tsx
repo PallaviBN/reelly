@@ -14,7 +14,7 @@ const SecondarySection = () => {
     useSelector(movieSelector);
   return (
     <div className="pb-4 pl-6">
-      <div className="-mt-72 relative z-20">
+      <div className="mt-1 lg:-mt-72 relative z-20">
         <MovieList type={"NOW PLAYING"} movies={nowPlayingMovies} />
         <MovieList type={"POPULAR"} movies={popularMovies} />
         <MovieList type={"TOP RATED"} movies={topRatedMovies} />

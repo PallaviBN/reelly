@@ -1,5 +1,4 @@
 import React, { SyntheticEvent, useRef, useState } from "react";
-import translate from "../utils/intl/translate";
 import { useIntl } from "react-intl";
 import openai from "../utils/static/openai";
 import fetchWrapper from "../utils/static/fetchWrapper";
@@ -64,7 +63,8 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="">
+    <div className="pt-[20%] md:pt-0">
+      
       <form
         className="flex items-center justify-center w-screen pt-[8%]"
         onSubmit={(event: SyntheticEvent) => {
@@ -74,21 +74,21 @@ const SearchBar = () => {
         <input
           ref={searchText}
           type="text"
-          className="p-4 m-4 rounded-md w-[30%] border-white border-2 bg-gray-700 font-bold text-white text-lg"
+          className="p-4 m-4 rounded-md w-[75%] md:w-[35%] border-white border-2 bg-gray-700 font-bold text-white text-lg"
           placeholder={searchPlaceholder}
           onChange={() => {
             setErrorMsg(null);
           }}
         ></input>
         <button
-          className="bg-red-500 py-2 px-2.5 font-medium text-yellow-50 rounded-md"
+          className="bg-black p-1 text-2xl rounded-full"
           onClick={searchHandler}
         >
-          {translate("search.text")}
+          🔍
         </button>
       </form>
       {errorMsg && (
-        <p className="font-bold text-red-400 text-center">{errorMsg}</p>
+        <p className="font-bold text-orange-300 text-center">{errorMsg}</p>
       )}
       <SearchResults searchTxt={searchText?.current?.value} />
     </div>

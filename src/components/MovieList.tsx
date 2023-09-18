@@ -35,7 +35,7 @@ const MovieList = ({ type, movies }: MovieListProps) => {
       </h2>
       <div className="flex flex-row h-full group">
         <button
-          className={`text-white bg-slate-700 opacity-70 w-[4.5%] z-20 -ml-8 text-6xl hover:text-8xl absolute left-0 h-[20.3%] transition-all duration-300 ease-in-out rounded-r-lg invisible ${
+          className={`text-white bg-slate-700 opacity-70 w-[8.5%] md:w-[4.5%] z-20 -ml-8 text-6xl hover:text-8xl absolute left-0 h-[19.1%] md:h-[20.3%] transition-all duration-300 ease-in-out rounded-r-lg invisible ${
             showArrow && showArrow > 0 ? "group-hover:visible" : ""
           }`}
           onClick={() => {
@@ -44,7 +44,7 @@ const MovieList = ({ type, movies }: MovieListProps) => {
         >
           ‹
         </button>
-        <ul className="flex overflow-x-hidden mx-4" ref={elementRef}>
+        <ul className="flex overflow-x-hidden md:mx-4" ref={elementRef}>
           {movies?.map((movie: MovieData) => {
             return (
               <li key={movie?.id}>
@@ -58,7 +58,7 @@ const MovieList = ({ type, movies }: MovieListProps) => {
           })}
         </ul>
         <button
-          className={`text-white bg-slate-700 opacity-70 w-[4.5%] mr-3 absolute right-0 h-[20.3%] text-6xl hover:text-8xl transition-all duration-300 ease-in-out 
+          className={`text-white bg-slate-700 opacity-70 w-[8.5%] md:w-[4.5%] md:mr-3 absolute right-0 h-[19.1%] md:h-[20.3%] text-6xl hover:text-8xl transition-all duration-300 ease-in-out 
           rounded-l-lg invisible ${showArrow === null || showArrow < 3320 ? "group-hover:visible" : ""}`}
           onClick={() => {
             handleHorizantalScroll(elementRef.current, 1000, 150);

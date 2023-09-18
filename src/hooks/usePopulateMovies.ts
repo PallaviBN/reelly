@@ -45,14 +45,14 @@ const usePopulateMovies = (
     if (typeState.length === 0) {
       getMovieList(type, actionCreator);
     }
-  }, [dispatch, type, typeMap]);
+  }, []);
 
-  const getMovieList = async (type, actionCreator) => {
+  const getMovieList = async (type: any, actionCreator: any) => {
     try {
       const data = await fetchWrapper(TMDB_MOVIES_API(type));
 
       // Dispatch the appropriate action based on the type
-      dispatch(actionCreator(data?.results));
+      dispatch(actionCreator(data?.results.reverse()));
       if (type === "NOW_PLAYING") dispatch(setFeaturedMovieIndex());
     } catch (error) {
       console.error("Error fetching movies:", error);
