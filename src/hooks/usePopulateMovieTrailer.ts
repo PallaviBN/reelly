@@ -11,7 +11,7 @@ const usePopulateMovieTrailer = (movieId: number): void => {
 
   useEffect(() => {
     // Call only if featuredMovieTrailer is empty
-    if (Object.keys(featuredMovieTrailer).length === 0) {
+    if (featuredMovieTrailer && Object.keys(featuredMovieTrailer).length === 0) {
       getVideos();
     }
   }, [featuredMovieTrailer]);

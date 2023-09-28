@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { MovieData, MovieVideo } from "../static/type";
+import { Genre, MovieData, MovieVideo } from "../static/type";
 
 const initialMovieState = {
   nowPlayingMovies: [] as MovieData[],
@@ -8,6 +8,8 @@ const initialMovieState = {
   topRatedMovies: [] as MovieData[],
   featuredMovieTrailer: {} as MovieVideo,
   featureMovieIndex: null as null | number,
+  genreList: [] as Genre[],
+  watchList: [] as MovieData[],
 };
 
 const movieSlice = createSlice({
@@ -37,6 +39,15 @@ const movieSlice = createSlice({
     resetFeaturedTrailer: (state) => {
       state.featuredMovieTrailer = {} as MovieVideo;
     },
+    addToGenreList: (state, { payload }) => {
+      state.genreList = payload;
+    },
+    addToWatchlist: (state, { payload }) => {
+      const movieExists = state.watchList.filter((m) => m.id === payload.id);
+      movieExists.length
+        ? (state.watchList = state.watchList.filter((m) => m.id !== payload.id))
+        : state.watchList.push(payload);
+    },
   },
 });
 
@@ -48,6 +59,8 @@ export const {
   addToTopRated,
   addFeaturedTrailer,
   resetFeaturedTrailer,
+  addToGenreList,
+  addToWatchlist,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

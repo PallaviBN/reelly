@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Login from "./Login";
 import Browse from "./Browse";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -10,7 +10,13 @@ import { gptSelector } from "../utils/redux/GPTSlice";
 import ENGLISH from "../utils/intl/languages/en.json";
 import HINDI from "../utils/intl/languages/hi.json";
 import FRENCH from "../utils/intl/languages/fr.json";
-import Search from "./Search";
+import WatchList from "./WatchList";
+import Loading from "./Loading";
+import ErrorBoundary from "./ErrorBoundary";
+// Lazy loading
+const Play = lazy(() => import("./Play"));
+const Details = lazy(() => import("./Details"));
+const Search = lazy(() => import("./Search"));
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -26,13 +32,39 @@ const Body = () => {
       path: "/search",
       element: <Search />,
     },
+    {
+      path: "/play/:id",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <Play />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/details/:id",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <Details />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/watchlist",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <WatchList />
+        </Suspense>
+      ),
+    },
   ]);
 
   const { locale } = useSelector(gptSelector);
   const messages = locale === "en" ? ENGLISH : locale === "hi" ? HINDI : FRENCH;
   return (
     <IntlProvider defaultLocale="en" locale={locale} messages={messages}>
-      <RouterProvider router={appRouter} />
+      <ErrorBoundary>
+        <RouterProvider router={appRouter} />
+      </ErrorBoundary>
     </IntlProvider>
   );
 };

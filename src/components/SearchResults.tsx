@@ -45,9 +45,10 @@ const SearchResults = ({ searchTxt }) => {
                 return (
                   <div key={m.id} className="flex flex-col items-center pb-4">
                     <MovieCard
-                      movieBackdrop={m.backdrop_path}
+                      movie={m}
                       moviePoster={m.poster_path}
                       movieTitle={m.title}
+                      movieId={m.id}
                     />
                   </div>
                 );

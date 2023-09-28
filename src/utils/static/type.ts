@@ -39,3 +39,8 @@ export enum MovieType {
   "UPCOMING",
   "TOP_RATED",
 }
+
+export interface Genre {
+  id: number;
+  name: string;
+}

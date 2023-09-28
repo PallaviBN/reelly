@@ -1,17 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
 import { IMG_CDN_URL } from "../utils/static/constants";
+import { useDispatch } from "react-redux";
+import { resetFeaturedTrailer } from "../utils/redux/MovieSlice";
+import { useNavigate } from "react-router-dom";
+import { MovieData } from "../utils/static/type";
 
 interface MovieCardProps {
-  movieBackdrop: string;
+  movie: MovieData;
   moviePoster: string;
   movieTitle: string;
+  movieId: number;
 }
 
 const MovieCard = ({
-  movieBackdrop,
+  movie,
   moviePoster,
   movieTitle,
+  movieId,
 }: MovieCardProps) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const playMovieHandler = (event: any) => {
+    event.preventDefault();
+    dispatch(resetFeaturedTrailer());
+    navigate({
+      pathname: "/play/" + movieId,
+    });
+  };
+
+  const viewDetailsHandler = (event: any) => {
+    event.preventDefault();
+    navigate(
+      {
+        pathname: "/details/" + movieId,
+      },
+      { state: { movieObj: movie } }
+    );
+  };
+
   return (
     <div className="relative w-44 xl:w-56 h-64 xl:h-80 ml-4">
       <div
@@ -25,10 +52,16 @@ const MovieCard = ({
             {movieTitle}
           </h2>
           <div className="flex">
-            <button className="m-2 pl-5 pr-4 text-center py-2.5 bg-red-500 text-white text-2xl rounded-full hover:bg-red-700 transition-colors ease-in-out duration-300">
+            <button
+              onClick={playMovieHandler}
+              className="m-2 pl-5 pr-4 text-center py-2.5 bg-red-500 text-white text-2xl rounded-full hover:bg-red-700 transition-colors ease-in-out duration-300"
+            >
               ▷
             </button>
-            <button className="m-2 px-6 py-2.5 bg-blue-500 text-white text-2xl rounded-full hover:bg-blue-700 transition-colors ease-in-out duration-300">
+            <button
+              onClick={viewDetailsHandler}
+              className="m-2 px-6 py-2.5 bg-blue-500 text-white text-2xl rounded-full hover:bg-blue-700 transition-colors ease-in-out duration-300"
+            >
               ℹ️
             </button>
           </div>

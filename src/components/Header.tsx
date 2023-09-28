@@ -29,7 +29,7 @@ const Header = () => {
         // User is signed in/up
         const { uid, email, displayName } = userObj;
         dispatch(addUser({ uid, email, displayName }));
-        navigate(isSearchView?"/search" :"/browse");
+        navigate(isSearchView ? "/search" : "/browse");
       } else {
         // User is signed out
         dispatch(removeUser({}));
@@ -61,20 +61,31 @@ const Header = () => {
     <header
       className={`flex align-middle w-full py-4 z-10 shadow-none ${
         isUser
-          ? `fixed z-30 opacity-90 rounded-b-lg px-4 md:px-16 justify-between ${!isSearchView ? "bg-black" : "bg-gradient-to-b from-black"}`
+          ? `fixed z-30 opacity-90 rounded-b-lg px-4 md:px-16 justify-between ${
+              !isSearchView ? "bg-black" : "bg-gradient-to-b from-black"
+            }`
           : "absolute bg-gradient-to-b from-black px-4 justify-center md:justify-between"
       }`}
     >
       <Link to="/browse">
         <img
-          className={`mx-auto ${isUser ? "md:w-32 h-12 md:ml-4 mt-1.5" : "w-40 md:ml-6"}`}
+          className={`mx-auto ${
+            isUser ? "md:w-32 h-12 md:ml-4 mt-1.5" : "w-40 md:ml-6"
+          }`}
           src={AppLogo}
           alt="app logo"
           onClick={(event: SyntheticEvent) => searchClickHandler(false)}
         />
       </Link>
+
       {isUser && (
         <div className="flex justify-center md:justify-end items-center">
+          <Link
+            to="/watchlist"
+            className="text-white mr-8 w-10 h-10 cursor-pointer text-3xl bg-amber-50 rounded-full shadow-black shadow-md"
+          >
+            📺
+          </Link>
           {isSearchView ? (
             <select
               className="mr-7 p-1.5 rounded-md font-bold text-white bg-indigo-800"
