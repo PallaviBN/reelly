@@ -10,13 +10,13 @@ import { gptSelector } from "../utils/redux/GPTSlice";
 import ENGLISH from "../utils/intl/languages/en.json";
 import HINDI from "../utils/intl/languages/hi.json";
 import FRENCH from "../utils/intl/languages/fr.json";
-import WatchList from "./WatchList";
+import Search from "./Search";
 import Loading from "./Loading";
 import ErrorBoundary from "./ErrorBoundary";
 // Lazy loading
 const Play = lazy(() => import("./Play"));
 const Details = lazy(() => import("./Details"));
-const Search = lazy(() => import("./Search"));
+const WatchList = lazy(() => import("./WatchList"));
 
 const Body = () => {
   const appRouter = createBrowserRouter([
