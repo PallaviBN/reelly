@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# REELLY
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Reelly uses the power of OpenAI's GPT-3.5 language model to generate movie recommendations, just like the way Netflix recommends content to its users. This project combines the capabilities of GPT-3.5 with data from TMDB to provide personalized content suggestions.
 
-## Available Scripts
+![Reelly Landing Page](image.png)
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Demo](#demo)
+- [Technology Stack](#technology-stack)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Content Recommendations**: Generate movie recommendations using OPENAI Turbo APIs based on user input or preferences.
 
-### `npm test`
+- **Content Descriptions**: Create detailed descriptions of movies and TV shows for a given title or genre.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Watchlist**: Save your favorite movies to a personalized watchlist for easy access later.
 
-### `npm run build`
+- **Multiple Language Support**: Search for content and interact with the model in multiple languages for a global user base(currently available languages: ENGLISH & HINDI).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **User Login and Authentication**: Securely authenticate users, allowing them to create accounts, log in, and personalize their experience.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Data Sources**: Utilize TMDb to render content data and descriptions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Category-Wise Movies Listing**: Explore movies categorized by ratings, release years, and more for easy browsing.
 
-### `npm run eject`
+## Demo
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Check out the live demo of Netflix GPT: [Reelly Demo](https://reelly-1b941.web.app/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technology Stack
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Reelly is built using the following technologies:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **React with Typescript**: The core programming language used for building the application logic.
 
-## Learn More
+- **Firebase**: A cloud-based platform for user authentication, hosting and deploying web application.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **OpenAI GPT-3.5**: The powerful language model from OpenAI used for generating recommendations and content descriptions.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **TailwindCSS**: A utility-first CSS framework used for fast, efficient and responsive styling of web components.
 
-### Code Splitting
+- **GitHub**: Version control and project management.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **TMDb (The Movie Database)**: TMDb is used as a data source for accessing movie data, enhancing content recommendations, and providing additional information about the movie.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This technology stack enables Reelly to provide a robust and interactive user experience while harnessing the power of AI for content recommendations and descriptions.
