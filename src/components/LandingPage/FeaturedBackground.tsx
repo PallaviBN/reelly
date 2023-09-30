@@ -1,6 +1,6 @@
-import usePopulateMovieTrailer from "../hooks/usePopulateMovieTrailer";
+import usePopulateMovieTrailer from "../../hooks/usePopulateMovieTrailer";
 import { useSelector } from "react-redux";
-import { movieSelector } from "../utils/redux/MovieSlice";
+import { movieSelector } from "../../redux/MovieSlice";
 import React from "react";
 interface FeaturedBackgroundProps {
   movieId: number;

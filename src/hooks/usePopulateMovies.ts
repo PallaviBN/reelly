@@ -8,7 +8,7 @@ import {
   addToUpcoming,
   movieSelector,
   setFeaturedMovieIndex,
-} from "../utils/redux/MovieSlice";
+} from "../redux/MovieSlice";
 import { TMDB_MOVIES_API } from "../utils/static/constants";
 
 const usePopulateMovies = (

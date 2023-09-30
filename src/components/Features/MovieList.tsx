@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import MovieCard from "./MovieCard";
-import { MovieData } from "../utils/static/type";
+import { MovieData } from "../../utils/static/type";
 
 interface MovieListProps {
   type: string;

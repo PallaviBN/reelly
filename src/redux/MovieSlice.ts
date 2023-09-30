@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Genre, MovieData, MovieVideo } from "../static/type";
+import { Genre, MovieData, MovieVideo } from "../utils/static/type";
 
 const initialMovieState = {
   nowPlayingMovies: [] as MovieData[],

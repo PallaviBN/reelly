@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import FeaturedBackground from "./FeaturedBackground";
-import FeaturedTitle from "./FeaturedTitle";
-import { movieSelector } from "../utils/redux/MovieSlice";
-import { MovieData } from "../utils/static/type";
+import FeaturedBackground from "../LandingPage/FeaturedBackground";
+import FeaturedTitle from "../LandingPage/FeaturedTitle";
+import { movieSelector } from "../../redux/MovieSlice";
+import { MovieData } from "../../utils/static/type";
 import React from "react";
 
 const PrimarySection = () => {

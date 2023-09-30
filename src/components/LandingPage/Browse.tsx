@@ -1,9 +1,9 @@
-import Header from "./Header";
-import usePopulateMovies from "../hooks/usePopulateMovies";
-import PrimarySection from "./PrimarySection";
-import SecondarySection from "./SecondarySection";
+import Header from "../Main/Header";
+import usePopulateMovies from "../../hooks/usePopulateMovies";
+import PrimarySection from "../Sections/PrimarySection";
+import SecondarySection from "../Sections/SecondarySection";
 import React from "react";
-import Footer from "./Footer";
+import Footer from "../Main/Footer";
 
 const Browse = () => {
   usePopulateMovies("NOW_PLAYING");

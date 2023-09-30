@@ -1,22 +1,22 @@
 import React, { Suspense, lazy } from "react";
-import Login from "./Login";
-import Browse from "./Browse";
+import Login from "../Login/Login";
+import Browse from "../LandingPage/Browse";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { IntlProvider } from "react-intl";
 import { useSelector } from "react-redux";
-import { gptSelector } from "../utils/redux/GPTSlice";
+import { gptSelector } from "../../redux/GPTSlice";
 // import languages from "../utils/intl/languages";
-import ENGLISH from "../utils/intl/languages/en.json";
-import HINDI from "../utils/intl/languages/hi.json";
-import FRENCH from "../utils/intl/languages/fr.json";
-import Search from "./Search";
-import Loading from "./Loading";
-import ErrorBoundary from "./ErrorBoundary";
+import ENGLISH from "../../utils/intl/languages/en.json";
+import HINDI from "../../utils/intl/languages/hi.json";
+import FRENCH from "../../utils/intl/languages/fr.json";
+import Search from "../Search/Search";
+import Loading from "../Common/Loading";
+import ErrorBoundary from "../Common/ErrorBoundary";
 // Lazy loading
-const Play = lazy(() => import("./Play"));
-const Details = lazy(() => import("./Details"));
-const WatchList = lazy(() => import("./WatchList"));
+const Play = lazy(() => import("../Features/Play"));
+const Details = lazy(() => import("../Features/Details"));
+const WatchList = lazy(() => import("../Features/WatchList"));
 
 const Body = () => {
   const appRouter = createBrowserRouter([

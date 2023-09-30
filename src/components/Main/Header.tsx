@@ -1,19 +1,19 @@
 import { SyntheticEvent, useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../utils/static/firebase";
-import { addUser, removeUser, userSelector } from "../utils/redux/UserSlice";
+import { auth } from "../../utils/static/firebase";
+import { addUser, removeUser, userSelector } from "../../redux/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { isNullorEmpty } from "../utils/static/common";
-import AppLogo from "../utils/media/appLogo.png";
+import { isNullorEmpty } from "../../utils/static/common";
+import AppLogo from "../../utils/media/appLogo.png";
 import {
   gptSelector,
   setLocale,
   toggleSearchView,
-} from "../utils/redux/GPTSlice";
-import translate from "../utils/intl/translate";
-import { SUPPORTED_LANGUAGES, USER_ICON } from "../utils/static/constants";
-import { SupportedLanguage } from "../utils/static/type";
+} from "../../redux/GPTSlice";
+import translate from "../../utils/intl/translate";
+import { SUPPORTED_LANGUAGES, USER_ICON } from "../../utils/static/constants";
+import { SupportedLanguage } from "../../utils/static/type";
 import React from "react";
 
 const Header = () => {

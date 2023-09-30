@@ -1,10 +1,10 @@
 import React, { SyntheticEvent, useRef, useState } from "react";
 import { useIntl } from "react-intl";
-import openai from "../utils/static/openai";
-import fetchWrapper from "../utils/static/fetchWrapper";
-import { TMDB_SEARCH_API } from "../utils/static/constants";
+import openai from "../../utils/static/openai";
+import fetchWrapper from "../../utils/static/fetchWrapper";
+import { TMDB_SEARCH_API } from "../../utils/static/constants";
 import { useDispatch } from "react-redux";
-import { addMovieResult } from "../utils/redux/GPTSlice";
+import { addMovieResult } from "../../redux/GPTSlice";
 import SearchResults from "./SearchResults";
 
 const SearchBar = () => {

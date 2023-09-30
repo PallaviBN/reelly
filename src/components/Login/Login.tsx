@@ -1,15 +1,15 @@
 import React, { SyntheticEvent, useRef, useState } from "react";
-import Header from "./Header";
-import { isNullorEmpty, validate } from "../utils/static/common";
+import Header from "../Main/Header";
+import { isNullorEmpty, validate } from "../../utils/static/common";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../utils/static/firebase";
+import { auth } from "../../utils/static/firebase";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/redux/UserSlice";
-import BGSVG from "../utils/media/background.svg";
+import { addUser } from "../../redux/UserSlice";
+import BGSVG from "../../utils/media/background.svg";
 
 const Login = () => {
   const dispatch = useDispatch();

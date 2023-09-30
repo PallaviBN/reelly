@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import fetchWrapper from "../utils/static/fetchWrapper";
 import { useDispatch } from "react-redux";
-import { addToGenreList } from "../utils/redux/MovieSlice";
+import { addToGenreList } from "../redux/MovieSlice";
 import { TMDB_GENRE_API } from "../utils/static/constants";
 
 const usePopulateGenres = () => {

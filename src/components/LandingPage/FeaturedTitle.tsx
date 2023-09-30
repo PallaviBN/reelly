@@ -4,9 +4,9 @@ import {
   addToWatchlist,
   movieSelector,
   resetFeaturedTrailer,
-} from "../utils/redux/MovieSlice";
+} from "../../redux/MovieSlice";
 import { useLocation, useNavigate } from "react-router-dom";
-import { MovieData } from "../utils/static/type";
+import { MovieData } from "../../utils/static/type";
 
 interface FeaturedTitleProps {
   id: number;

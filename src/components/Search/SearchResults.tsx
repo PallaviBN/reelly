@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
-import { gptSelector, resetMovieSearchResult } from "../utils/redux/GPTSlice";
+import { gptSelector, resetMovieSearchResult } from "../../redux/GPTSlice";
 import { useDispatch, useSelector } from "react-redux";
-import MovieCard from "./MovieCard";
-import { MovieData } from "../utils/static/type";
-import translate from "../utils/intl/translate";
+import MovieCard from "../Features/MovieCard";
+import { MovieData } from "../../utils/static/type";
+import translate from "../../utils/intl/translate";
 
 const SearchResults = ({ searchTxt }) => {
   const dispatch = useDispatch();

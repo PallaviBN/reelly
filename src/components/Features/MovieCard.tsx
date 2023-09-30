@@ -1,9 +1,9 @@
 import React from "react";
-import { IMG_CDN_URL } from "../utils/static/constants";
+import { IMG_CDN_URL } from "../../utils/static/constants";
 import { useDispatch } from "react-redux";
-import { resetFeaturedTrailer } from "../utils/redux/MovieSlice";
+import { resetFeaturedTrailer } from "../../redux/MovieSlice";
 import { useNavigate } from "react-router-dom";
-import { MovieData } from "../utils/static/type";
+import { MovieData } from "../../utils/static/type";
 
 interface MovieCardProps {
   movie: MovieData;

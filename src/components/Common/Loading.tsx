@@ -1,5 +1,5 @@
 import React from "react";
-import LoadingGIF from "../utils/media/31a97258737059.5a07705b4b565.gif";
+import LoadingGIF from "../../utils/media/31a97258737059.5a07705b4b565.gif";
 
 const Loading = () => {
   return (

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import fetchWrapper from "../utils/static/fetchWrapper";
 import { useDispatch, useSelector } from "react-redux";
-import { addFeaturedTrailer, movieSelector } from "../utils/redux/MovieSlice";
+import { addFeaturedTrailer, movieSelector } from "../redux/MovieSlice";
 import { MovieVideo } from "../utils/static/type";
 import { TMDB_VIDEO_API } from "../utils/static/constants";
 

@@ -1,8 +1,8 @@
 import React from "react";
-import MovieList from "./MovieList";
+import MovieList from "../Features/MovieList";
 import { useSelector } from "react-redux";
-import { movieSelector } from "../utils/redux/MovieSlice";
-import usePopulateMovies from "../hooks/usePopulateMovies";
+import { movieSelector } from "../../redux/MovieSlice";
+import usePopulateMovies from "../../hooks/usePopulateMovies";
 
 const SecondarySection = () => {
   

@@ -1,9 +1,9 @@
 import React from "react";
-import usePopulateMovieTrailer from "../hooks/usePopulateMovieTrailer";
+import usePopulateMovieTrailer from "../../hooks/usePopulateMovieTrailer";
 import { useSelector } from "react-redux";
-import { movieSelector } from "../utils/redux/MovieSlice";
+import { movieSelector } from "../../redux/MovieSlice";
 import { Link, useParams } from "react-router-dom";
-import AppLogo from "../utils/media/appLogo.png";
+import AppLogo from "../../utils/media/appLogo.png";
 
 const Play = () => {
   const { id } = useParams();

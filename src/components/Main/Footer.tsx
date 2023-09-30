@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { gptSelector } from "../utils/redux/GPTSlice";
-import LinkedInSVG from "../utils/media/icons8-linkedin.svg";
-import GithubSVG from "../utils/media/icons8-github.svg";
-import translate from "../utils/intl/translate";
+import { gptSelector } from "../../redux/GPTSlice";
+import LinkedInSVG from "../../utils/media/icons8-linkedin.svg";
+import GithubSVG from "../../utils/media/icons8-github.svg";
+import translate from "../../utils/intl/translate";
 
 const Footer = () => {
   const { isSearchView } = useSelector(gptSelector);

@@ -1,8 +1,8 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import Header from "./Header";
-import Footer from "./Footer";
-import BGSVG from "../utils/media/background.svg";
+import Header from "../Main/Header";
+import Footer from "../Main/Footer";
+import BGSVG from "../../utils/media/background.svg";
 
 const Search = () => {
   return (

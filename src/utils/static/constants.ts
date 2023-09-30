@@ -9,7 +9,7 @@ export const USER_ICON =
 
 export const SUPPORTED_LANGUAGES: SupportedLanguage[] = [
   { id: "en", name: "English" },
-  { id: "fr", name: "French" },
+  // { id: "fr", name: "French" },
   { id: "hi", name: "हिंदी" },
 ];
 

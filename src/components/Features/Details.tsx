@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { IMG_CDN_URL, TMDB_GENRE_API } from "../utils/static/constants";
-import { Genre, MovieData } from "../utils/static/type";
-import BGSVG from "../utils/media/background.svg";
-import { addToGenreList, movieSelector } from "../utils/redux/MovieSlice";
+import { IMG_CDN_URL, TMDB_GENRE_API } from "../../utils/static/constants";
+import { Genre, MovieData } from "../../utils/static/type";
+import BGSVG from "../../utils/media/background.svg";
+import { addToGenreList, movieSelector } from "../../redux/MovieSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import AppLogo from "../utils/media/appLogo.png";
-import FeaturedTitle from "./FeaturedTitle";
-import usePopulateGenres from "../hooks/usePopulateGenres";
+import AppLogo from "../../utils/media/appLogo.png";
+import FeaturedTitle from "../LandingPage/FeaturedTitle";
+import usePopulateGenres from "../../hooks/usePopulateGenres";
 
 const Details = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Details = () => {
     overview,
     release_date,
     vote_average,
-  }: MovieData = location.state.movieObj;
+  }: MovieData = location.state?.movieObj;
 
   usePopulateGenres();
 
@@ -76,10 +76,10 @@ const Details = () => {
                 if (genre.id === id) {
                   return (
                     <span
-                      key={genre.id}
+                      key={genre?.id}
                       className="text-lg font-medium rounded-md leading-10 py-1 text-white cursor-pointer text-600 m-0 w-fit px-2 underline underline-offset-4"
                     >
-                      {genre.name}
+                      {genre?.name}
                     </span>
                   );
                 }

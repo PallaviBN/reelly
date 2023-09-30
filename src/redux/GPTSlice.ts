@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { MovieData } from "../static/type";
+import { MovieData } from "../utils/static/type";
 
 const initialGPTState = {
   isSearchView: false,
