@@ -124,9 +124,14 @@ const Header = () => {
             </span>
           </div>
           {openUserMenu && (
-            <ul className="absolute z-20 rounded-sm bg-white text-black opacity-70 w-[160px] font-mono h-auto p-2 right-14 top-[64px] shadow-lg">
+            <ul className="absolute z-20 rounded-sm bg-white text-black w-[160px] font-mono h-auto p-2 right-16 top-[70px] shadow-lg">
               <li
-                className="text-center cursor-pointer"
+                className="font-bold text-center border-y-2 py-1 capitalize text-red-600" 
+              >
+                {user?.displayName}
+              </li>
+              <li
+                className="text-center mt-2 mb-1 cursor-pointer hover:text-lg"
                 onClick={signOutHandler}
               >
                 {translate("sign.out.text")}
