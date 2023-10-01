@@ -28,7 +28,7 @@ Reelly uses the power of OpenAI's GPT-3.5 language model to generate movie recom
 
 ## Demo
 
-Check out the live demo of Netflix GPT: [Reelly Demo](https://reelly-1b941.web.app/)
+Check out the live demo of Reelly: [Reelly Demo](https://reelly-1b941.web.app/)
 
 ## Technology Stack
 
